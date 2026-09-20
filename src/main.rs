@@ -8,7 +8,7 @@ fn main() {
     let input = io::stdin();
     let mut guess = String::new();
     input.read_line(&mut guess).expect("TODO: panic message");
-    println!("{}", guess);
+    println!("{1}{0}",guess,"ee");
     if 1>2 {
         
     }
