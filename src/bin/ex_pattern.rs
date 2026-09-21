@@ -1,7 +1,7 @@
 use rand;
 
 fn main() {
-    // pattern matching is important for many larger programs. think of it like
+    // pattern matching is useful for many applications. think of it like
     // an if statement for data types other than boolean.
     
     let number = rand::random_range(1..5);
@@ -33,7 +33,7 @@ fn main() {
         }
     }
     // just like before, it checks which type it has and does the corresponding action.
-    // because enums usually have a small number of cases, its possible can check
+    // because enums usually have a small number of cases, it's often possible to check
     // all of them, meaning you don't need to use a catch-all case. the individual cases
     // can also work with any stored data the enum case contains.
     

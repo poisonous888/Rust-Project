@@ -1,6 +1,20 @@
 fn main() {
+    // storing and retrieving information is a core element of any program. most programming
+    // languages either implement a garbage collector that periodically cleans up unreferenced
+    // objects, or expects the programmer to manually manage memory.
+    
+    // rust takes a different approach: every object is 'owned' by a single variable, and
+    // when that variable goes out of scope, the object is cleaned up. only the variable
+    // that owns the object has a direct reference to it, and indirect references have to
+    // follow specific rules that are checked at compile-time. this makes it hard to cause
+    // memory issues that commonly happen with manual memory, without the performance cost
+    // of a garbage collector.
+    
+    //--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
+    
     let variable_1 = NewType{ value: String::from("Hello World!") };
-    // creating an object and storing it in variable_1
+    // creating an object and storing it in variable_1. this gives the ownership of the
+    // new object to variable_1
     
     print_stuff(variable_1);
     // passing the object as a parameter to a function. this transfers the
@@ -11,18 +25,7 @@ fn main() {
     // Won't compile because the object stored in variable_1 is
     // no longer owned by variable_1, and as such cant be used anymore
     
-    // because only 1 variable can hold and work with an object at a time, it means
-    // that the program doesn't have to worry about things like objects being deleted
-    // before their done being used or modified while being read. additionally, because
-    // variables are automatically cleaned up when they aren't used anymore or fall
-    // out of scope, it means that there's no risk of accidentally forgetting to
-    // clean up an object after it's done being used. this acts as a sort of
-    // inline garbage collector.
-    
     //--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
-    
-    // there are many times however where you just need temporary access to an object,
-    // which is why rust created the borrowing system.
     
     let variable_2 = NewType{ value: String::from("Foo Bar!") };
     // creating another object and storing it in variable_2
@@ -46,20 +49,22 @@ fn main() {
     // in other languages.
     
     let mut variable_3 = NewType{ value: String::from("Not Mutated Yet!") };
-    // this changes with mutable references
+    // creating a mutable object and storing it in variable_3
     
     let borrowed_mutable = &mut variable_3;
     // mutable borrows are made similarly to normal borrows, just with the extra 'mut'
     
 //  let borrowed_3 = &variable_3;
 //  let borrowed_mutable_2 = &mut variable_3;
-    // while a mutable borrow is active, no other borrows can be created. similarly,
-    // mutable borrows can only be created if there are no other active borrows
+    // while a mutable borrow is active, no other borrows can be created. mutable borrows
+    // can only be created if there are no other active borrows
     
     mutate_from_borrow(borrowed_mutable);
-    // mutable borrows also have their own type separate from normal borrows.
+    print_from_borrow(&mut variable_3);
+    // similar to normal borrows, mutable borrows have their own separate type. mutable
+    // borrows can be used in place of normal borrows, but not the other way around.
     
-    print_from_borrow(&variable_2)
+    print_from_borrow(&variable_2);
     // after the last use of a borrow, it is automatically cleaned up, letting
     // it be borrowed by other things again.
 }
@@ -72,6 +77,6 @@ fn print_stuff(object:NewType){
 fn print_from_borrow(object:&NewType){
     println!("{}", object.value)
 }
-fn mutate_from_borrow(object:&mut NewType){
-    object.value=String::from("Mutated!")
-}
+    fn mutate_from_borrow(object:&mut NewType){
+        object.value=String::from("Mutated!")
+    }
