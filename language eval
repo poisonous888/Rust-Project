@@ -4,51 +4,59 @@ Language: Rust
 Name(s): Bryan, Ryan
 
 DOMAIN
-C-style, focusing on reliability and memory safety without compromising speed
+C-style, focusing on reliability and memory safety without compromising speed.
+main uses are in systems engineering.
 
 EVAULATION CRITERIA
+
 READABILITY
+rust is not particularly readable
+
 SIMPLICITY
+rust is harder to learn than many other languages, mostly due to the borrow checker and
 
 ORTHOGONALITY
+rust deliberately has low orthogonality in order to make it more memory safe.
 
 DATA TYPES
+rust has a large amount of data types, i8 and u8 through i128 and u128, f32 and f64,
+char, str, bool. 
 
 SYNTAX DESIGN
-
-SUMMARY OF READABILITY
+the syntax is c-style for most things, which is common in a lot of languages
 
 WRITABILITY
+rust is specifically designed for code safety, so even though it may be harder to
+write code in rust, the resulting code will be very reliable, which is important for
+systems engineering, its main use.
+
 SUPPORT FOR ABSTRACTION
+
 
 EXPRESSIVITY
 
-SUMMARY OF WRITABILITY
 
 RELIABILITY
+just like in writability, rust is designed to be safe and minimize undefined behavior
+
 TYPE CHECKING
+rust's type system is strictly enforced
 
 EXCEPTION HANDLING
+result is good for small function errors and panics are good for major problems.
 
 RESTRICTED ALIASING
-
-SUMMARY OF RELIABILITY
+rust does not allow any forms of aliasing directly.
 
 COST
+the main cost of rust is development. being harder to learn and the fact that its a
+very new language, there are less experienced programmers for it. development may be
+slower due to the restrictive nature of rust, but this saves time in the long run because
+code will fail less often.
 
-
-
+compiling code in rust takes slightly longer because of the borrow checker, but after
+compiling, it dosent need to do any of those checks, making it fast.
 
 DESIGN TRADEOFFS
-
-
-
-
-
-
-
-
-
-
-
+it is designed for systems engineering and other places where code safety is important
 
